@@ -15,4 +15,16 @@ export class TmdbService {
   search(query: string) {
     return this.http.get(`${this.base}/search/movie?query=${query}&api_key=${this.key}`);
   }
+
+  getMovieDetails(id: string) {
+    return this.http.get(`${this.base}/movie/${id}?api_key=${this.key}`);
+  }
+
+  getMovieCredits(id: string) {
+    return this.http.get(`${this.base}/movie/${id}/credits?api_key=${this.key}`);
+  }
+
+  getPersonDetails(id: string) {
+    return this.http.get(`${this.base}/person/${id}?api_key=${this.key}`);
+  }
 }

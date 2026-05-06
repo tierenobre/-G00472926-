@@ -1,13 +1,30 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>movie-details</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ movie?.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">movie-details</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding" *ngIf="movie">
+  <img *ngIf="movie.poster_path" [src]="img(movie.poster_path)">
+  <h2>{{ movie.title }}</h2>
+  <p>{{ movie.overview }}</p>
+  <p><strong>Release:</strong> {{ movie.release_date }}</p>
+  <p><strong>Rating:</strong> {{ movie.vote_average | number:'1.1-1' }}/10</p>
+
+  <h3>Cast</h3>
+  <ion-list>
+    <ion-item *ngFor="let person of cast" [routerLink]="['/details', person.id]">
+      <ion-label>{{ person.name }} as {{ person.character }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <h3>Crew</h3>
+  <ion-list>
+    <ion-item *ngFor="let person of crew" [routerLink]="['/details', person.id]">
+      <ion-label>{{ person.name }} — {{ person.job }}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
