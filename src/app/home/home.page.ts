@@ -41,12 +41,15 @@ export class HomePage implements OnInit {
 
   onSearch(event: any) {
     const term = event.detail.value;
+  
     if (!term || term.trim() === '') {
       this.loadTrending();
       return;
     }
+  
     this.searching = true;
-    this.tmdb.search(term).subscribe((res: any) => {
+  
+    this.tmdb.search(term.trim()).subscribe((res: any) => {
       this.movies = res.results;
     });
   }

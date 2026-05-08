@@ -20,6 +20,7 @@
 
   <ion-card *ngFor="let movie of movies" [routerLink]="['/movie-details', movie.id]">
     <img *ngIf="movie.poster_path" [src]="img(movie.poster_path)">
+    <div *ngIf="!movie.poster_path">No image</div>
     <ion-card-header>
       <ion-card-title>{{ movie.title }}</ion-card-title>
     </ion-card-header>
