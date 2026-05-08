@@ -14,16 +14,20 @@
   <p><strong>Release:</strong> {{ movie.release_date }}</p>
   <p><strong>Rating:</strong> {{ movie.vote_average | number:'1.1-1' }}/10</p>
 
+  <ion-button expand="block" (click)="toggleFavourite()">
+    {{ isFav ? 'Remove From Favourites' : 'Add To Favourites' }}
+  </ion-button>
+
   <h3>Cast</h3>
   <ion-list>
-    <ion-item *ngFor="let person of cast" [routerLink]="['/details', person.id]">
+    <ion-item *ngFor="let person of cast" (click)="goToPerson(person.id)" button="true">
       <ion-label>{{ person.name }} as {{ person.character }}</ion-label>
     </ion-item>
   </ion-list>
 
   <h3>Crew</h3>
   <ion-list>
-    <ion-item *ngFor="let person of crew" [routerLink]="['/details', person.id]">
+    <ion-item *ngFor="let person of crew" (click)="goToPerson(person.id)" button="true">
       <ion-label>{{ person.name }} — {{ person.job }}</ion-label>
     </ion-item>
   </ion-list>

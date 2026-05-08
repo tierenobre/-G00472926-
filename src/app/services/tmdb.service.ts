@@ -27,4 +27,9 @@ export class TmdbService {
   getPersonDetails(id: string) {
     return this.http.get(`${this.base}/person/${id}?api_key=${this.key}`);
   }
+
+  getPersonMovieCredits(id: string) {
+    return this.http.get(`${this.base}/person/${id}/movie_credits?api_key=${this.key}`);
+  }
+  
 }
