@@ -11,12 +11,13 @@
 
 
 <ion-content class="ion-padding">
-  <ion-searchbar
-    placeholder="Search movies"
-    (ionInput)="onSearch($event)">
+  <ion-searchbar placeholder="Search movies" (ionInput)="onSearch($event)">
   </ion-searchbar>
 
   <h2>{{ searching ? 'Search Results' : "Today's Trending Movies" }}</h2>
+  <p *ngIf="searching && movies.length === 0">
+    No movies found.
+  </p>
 
   <ion-card *ngFor="let movie of movies" [routerLink]="['/movie-details', movie.id]">
     <img *ngIf="movie.poster_path" [src]="img(movie.poster_path)">
@@ -27,4 +28,3 @@
     <ion-card-content>{{ movie.overview }}</ion-card-content>
   </ion-card>
 </ion-content>
-
