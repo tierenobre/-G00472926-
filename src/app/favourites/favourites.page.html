@@ -12,12 +12,26 @@
     <p>No favourite movies yet.</p>
   </div>
 
-  <ion-list *ngIf="favourites.length > 0">
-    <ion-item *ngFor="let movie of favourites">
-      <ion-label>{{ movie.title }}</ion-label>
-      <ion-button slot="end" [routerLink]="['/movie-details', movie.id]">
-        Details
-      </ion-button>
-    </ion-item>
-  </ion-list>
-</ion-content>
+  <ion-item *ngFor="let movie of favourites">
+
+    <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" width="80">
+
+    <div *ngIf="!movie.poster_path">
+      No image
+    </div>
+
+    <ion-label>
+
+      <h2>{{ movie.title }}</h2>
+
+      <p>{{ movie.overview }}</p>
+
+    </ion-label>
+
+    <ion-button slot="end" [routerLink]="['/movie-details', movie.id]">
+
+      Details
+
+    </ion-button>
+
+  </ion-item>
