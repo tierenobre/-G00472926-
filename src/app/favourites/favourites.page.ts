@@ -13,8 +13,7 @@ import { FavouritesService } from '../services/favourites.service';
   styleUrls: ['favourites.page.scss'],
   standalone: true,
   imports: [CommonModule, RouterLink,
-    IonHeader, IonToolbar, IonTitle, IonContent,
-    IonList, IonItem, IonLabel, IonButton, IonButtons, IonBackButton],
+    IonHeader, IonToolbar, IonTitle, IonContent, IonItem, IonLabel, IonButton, IonButtons, IonBackButton],
 })
 export class FavouritesPage implements OnInit {
   favourites: any[] = [];
