@@ -1,15 +1,29 @@
 <ion-header>
   <ion-toolbar>
+
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
+
     <ion-title>{{ movie?.title }}</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/home']">
+        Home
+      </ion-button>
+
+      <ion-button [routerLink]="['/favourites']">
+        Favourites
+      </ion-button>
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding" *ngIf="movie">
   <img *ngIf="movie.poster_path" [src]="img(movie.poster_path)">
   <div *ngIf="!movie.poster_path">No image</div>
+
   <h2>{{ movie.title }}</h2>
   <p>{{ movie.overview }}</p>
   <p><strong>Release:</strong> {{ movie.release_date }}</p>
@@ -42,3 +56,5 @@
       </ion-label>
     </ion-item>
   </ion-list>
+
+</ion-content>
