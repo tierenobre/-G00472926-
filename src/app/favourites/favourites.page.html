@@ -8,6 +8,11 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+
+  <p>
+    You have {{ favourites.length }} favourite movies.
+  </p>
+
   <div *ngIf="favourites.length === 0">
     <p>No favourite movies yet.</p>
   </div>
