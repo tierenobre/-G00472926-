@@ -20,11 +20,11 @@ export class DetailsPage implements OnInit {
   person: any = null;
   movies: any[] = [];
 
-  constructor(private route: ActivatedRoute, private tmdb: TmdbService) {}
+  constructor(private route: ActivatedRoute, private tmdb: TmdbService) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id')!;
-    
+
     this.tmdb.getPersonDetails(id).subscribe((res: any) => {
       this.person = res;
     });

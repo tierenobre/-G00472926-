@@ -9,6 +9,7 @@
 
 <ion-content class="ion-padding" *ngIf="movie">
   <img *ngIf="movie.poster_path" [src]="img(movie.poster_path)">
+  <div *ngIf="!movie.poster_path">No image</div>
   <h2>{{ movie.title }}</h2>
   <p>{{ movie.overview }}</p>
   <p><strong>Release:</strong> {{ movie.release_date }}</p>
@@ -21,14 +22,23 @@
   <h3>Cast</h3>
   <ion-list>
     <ion-item *ngFor="let person of cast" (click)="goToPerson(person.id)" button="true">
-      <ion-label>{{ person.name }} as {{ person.character }}</ion-label>
+      <img *ngIf="person.profile_path" [src]="img(person.profile_path)" width="50">
+      <div *ngIf="!person.profile_path">No image</div>
+
+      <ion-label>
+        {{ person.name }} as {{ person.character }}
+      </ion-label>
     </ion-item>
   </ion-list>
 
   <h3>Crew</h3>
   <ion-list>
     <ion-item *ngFor="let person of crew" (click)="goToPerson(person.id)" button="true">
-      <ion-label>{{ person.name }} — {{ person.job }}</ion-label>
+      <img *ngIf="person.profile_path" [src]="img(person.profile_path)" width="50">
+      <div *ngIf="!person.profile_path">No image</div>
+
+      <ion-label>
+        {{ person.name }} — {{ person.job }}
+      </ion-label>
     </ion-item>
   </ion-list>
-</ion-content>
