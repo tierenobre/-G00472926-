@@ -29,6 +29,11 @@
   <p><strong>Release:</strong> {{ movie.release_date }}</p>
   <p><strong>Rating:</strong> {{ movie.vote_average | number:'1.1-1' }}/10</p>
 
+  <p *ngIf="movie.genres?.length">
+    <strong>Genres:</strong>
+    {{ getGenres() }}
+  </p>
+
   <ion-button expand="block" (click)="toggleFavourite()">
     {{ isFav ? 'Remove From Favourites' : 'Add To Favourites' }}
   </ion-button>

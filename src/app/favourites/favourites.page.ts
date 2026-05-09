@@ -19,7 +19,7 @@ import { FavouritesService } from '../services/favourites.service';
 export class FavouritesPage implements OnInit {
   favourites: any[] = [];
 
-  constructor(private favouritesService: FavouritesService) {}
+  constructor(private favouritesService: FavouritesService) { }
 
   ngOnInit() {
     this.favourites = this.favouritesService.getFavourites();

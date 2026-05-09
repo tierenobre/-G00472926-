@@ -27,3 +27,4 @@ export class FavouritesService {
     localStorage.setItem(this.key, JSON.stringify(favourites));
   }
 }
+

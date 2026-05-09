@@ -28,7 +28,7 @@ export class MovieDetailsPage implements OnInit {
     private router: Router,
     private tmdb: TmdbService,
     private favouritesService: FavouritesService
-  ) {}
+  ) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id')!;
@@ -61,4 +61,13 @@ export class MovieDetailsPage implements OnInit {
   img(path: string) {
     return 'https://image.tmdb.org/t/p/w500' + path;
   }
+
+  getGenres(): string {
+    if (!this.movie?.genres) {
+      return '';
+    }
+
+    return this.movie.genres.map((g: any) => g.name).join(', ');
+  }
+
 }
